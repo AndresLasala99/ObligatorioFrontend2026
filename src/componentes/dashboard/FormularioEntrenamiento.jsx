@@ -86,11 +86,8 @@ const FormularioEntrenamiento = () => {
           <h2>Agregar entrenamiento</h2>
           <p className="text-secondary">Crea una nueva propuesta para tus alumnos.</p>
         </div>
-        <button type="button" className="btn btn-outline-secondary" onClick={() => dispatch(mostrarEntrenamientos())}>
-          Volver
-        </button>
       </div>
-      <form onSubmit={handleSubmit(procesarForm)}>
+      <form className="formulario-panel" onSubmit={handleSubmit(procesarForm)}>
         <div className="mb-3">
           <label htmlFor="tituloEntrenamiento" className="form-label">Titulo</label>
           <input id="tituloEntrenamiento" className="form-control" type="text" placeholder="Ingrese el título" {...register("titulo")} />
@@ -152,6 +149,10 @@ const FormularioEntrenamiento = () => {
 
         <button type="submit" className="btn btn-primary w-100" disabled={isSubmitting || !isValid}>
           {isSubmitting ? "Guardando..." : "Guardar"}
+        </button>
+
+        <button type="button" className="btn btn-outline-secondary w-100 mt-3" onClick={() => dispatch(mostrarEntrenamientos())}>
+          Volver
         </button>
       </form>
     </article>

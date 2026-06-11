@@ -1,4 +1,4 @@
-﻿import { joiResolver } from "@hookform/resolvers/joi"
+import { joiResolver } from "@hookform/resolvers/joi"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
@@ -84,63 +84,62 @@ const CategoriaForm = () => {
           <h2>Agregar categoría</h2>
           <p className="text-secondary">Crea una categoría para organizar tus entrenamientos.</p>
         </div>
-        <button type="button" className="btn btn-outline-secondary" onClick={() => dispatch(mostrarCategorias())}>
-          Volver
-        </button>
       </div>
 
-    <form className="categoria-form" onSubmit={handleSubmit(procesarForm)}>
-      <div className="mb-3">
-        <label htmlFor="nombreCategoria" className="form-label">Nombre</label>
-        <input id="nombreCategoria" type="text" className="form-control" placeholder="Ingrese el nombre" {...register("nombre")} />
-        {errors.nombre && <span className="error">{errors.nombre.message}</span>}
-      </div>
-
-      <div className="mb-3">
-        <label htmlFor="descripcionCategoria" className="form-label">Descripción</label>
-        <textarea
-          id="descripcionCategoria"
-          className="form-control"
-          rows="3"
-          placeholder={usarIA ? "Ej: Quiero una descripción para una categoría de entrenamiento CORE" : "Ingrese una descripción"}
-          {...register("descripcion")}
-        />
-        {errors.descripcion && <span className="error">{errors.descripcion.message}</span>}
-      </div>
-
-      <div className="mb-3">
-        <div className="form-check">
-          <input
-            id="usarIACategoria"
-            type="checkbox"
-            className="form-check-input"
-            checked={usarIA}
-            onChange={(e) => setUsarIA(e.target.checked)}
-          />
-          <label htmlFor="usarIACategoria" className="form-check-label">Ayúdate con IA</label>
+      <form className="categoria-form formulario-panel" onSubmit={handleSubmit(procesarForm)}>
+        <div className="mb-3">
+          <label htmlFor="nombreCategoria" className="form-label">Nombre</label>
+          <input id="nombreCategoria" type="text" className="form-control" placeholder="Ingrese el nombre" {...register("nombre")} />
+          {errors.nombre && <span className="error">{errors.nombre.message}</span>}
         </div>
 
-        {usarIA && (
-          <button type="button" className="btn btn-outline-secondary btn-sm mt-2" onClick={generarDescripcionIA} disabled={generandoIA || !watch("descripcion")?.trim()}>
-            {generandoIA ? "Generando..." : "Generar descripción"}
-          </button>
-        )}
-      </div>
+        <div className="mb-3">
+          <label htmlFor="descripcionCategoria" className="form-label">Descripción</label>
+          <textarea
+            id="descripcionCategoria"
+            className="form-control"
+            rows="3"
+            placeholder={usarIA ? "Ej: Quiero una descripción para una categoría de entrenamiento CORE" : "Ingrese una descripción"}
+            {...register("descripcion")}
+          />
+          {errors.descripcion && <span className="error">{errors.descripcion.message}</span>}
+        </div>
 
-      <div className="mb-3">
-        <label htmlFor="imagenCategoria" className="form-label">Imagen</label>
-        <input id="imagenCategoria" type="file" className="form-control" accept="image/*" {...register("imagen")} />
-        {errors.imagen && <span className="error">{errors.imagen.message}</span>}
-      </div>
+        <div className="mb-3">
+          <div className="form-check">
+            <input
+              id="usarIACategoria"
+              type="checkbox"
+              className="form-check-input"
+              checked={usarIA}
+              onChange={(e) => setUsarIA(e.target.checked)}
+            />
+            <label htmlFor="usarIACategoria" className="form-check-label">Ayúdate con IA</label>
+          </div>
 
-      <button type="submit" className="btn btn-primary w-100" disabled={isSubmitting || !isValid}>
-        {isSubmitting ? "Guardando..." : "Crear categoría"}
-      </button>
-    </form>
+          {usarIA && (
+            <button type="button" className="btn btn-outline-secondary btn-sm mt-2" onClick={generarDescripcionIA} disabled={generandoIA || !watch("descripcion")?.trim()}>
+              {generandoIA ? "Generando..." : "Generar descripción"}
+            </button>
+          )}
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="imagenCategoria" className="form-label">Imagen</label>
+          <input id="imagenCategoria" type="file" className="form-control" accept="image/*" {...register("imagen")} />
+          {errors.imagen && <span className="error">{errors.imagen.message}</span>}
+        </div>
+
+        <button type="submit" className="btn btn-primary w-100" disabled={isSubmitting || !isValid}>
+          {isSubmitting ? "Guardando..." : "Crear categoría"}
+        </button>
+
+        <button type="button" className="btn btn-outline-secondary w-100 mt-3" onClick={() => dispatch(mostrarCategorias())}>
+          Volver
+        </button>
+      </form>
     </article>
   )
 }
 
 export default CategoriaForm
-
-
