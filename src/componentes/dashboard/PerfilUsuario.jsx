@@ -239,7 +239,7 @@ const PerfilUsuario = () => {
           </div>
 
           <p><strong>Entrenamientos creados:</strong> {usoPlan.entrenamientosCreados}</p>
-          <p><strong>Entrenamientos restantes:</strong> {usoPlan.entrenamientosRestantes}</p>
+          <p><strong>Entrenamientos restantes:</strong> {usoPlan.limitePlan ? usoPlan.entrenamientosRestantes : "Sin límite"}</p>
 
           <div className="progress mb-3" role="progressbar" aria-label="Uso del plan" aria-valuenow={usoPlan.porcentajeUso} aria-valuemin="0" aria-valuemax="100">
             <div className="progress-bar" style={{ width: `${usoPlan.porcentajeUso}%` }}>
