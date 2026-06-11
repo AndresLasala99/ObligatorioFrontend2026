@@ -39,7 +39,6 @@ const Motivacion = () => {
         {frase ? (
           <>
             <h2>"{frase.frase}"</h2>
-            <p className="text-secondary mb-4">{frase.autor}</p>
           </>
         ) : (
           <p className="text-secondary mb-4">Todavia no hay una frase cargada.</p>
