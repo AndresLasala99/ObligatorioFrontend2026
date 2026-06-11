@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { logout } from "../../features/auth/auth.slice.js"
-import { mostrarCategorias, mostrarCuenta, mostrarEntrenamientos, mostrarHistorial, mostrarHistorialEntrenamientos, mostrarMisInscripciones, mostrarPerfil, mostrarPrincipal } from "../../features/dashboard/dashboard.slice.js"
+import { mostrarCategorias, mostrarCuenta, mostrarEntrenamientos, mostrarHistorial, mostrarHistorialEntrenamientos, mostrarMisInscripciones, mostrarMotivacion, mostrarPerfil, mostrarPrincipal } from "../../features/dashboard/dashboard.slice.js"
 
 const BarraLateral = () => {
   const dispatch = useDispatch()
@@ -50,6 +50,7 @@ const BarraLateral = () => {
               <button type="button" className={`nav-link ${vistaDashboard === "historial" ? "active" : ""}`} onClick={() => cambiarVista(mostrarHistorial)}>Historial</button>
             </>
           )}
+          <button type="button" className={`nav-link ${vistaDashboard === "motivacion" ? "active" : ""}`} onClick={() => cambiarVista(mostrarMotivacion)}>Motivacion</button>
           <button type="button" className={`nav-link ${vistaDashboard === "perfil" ? "active" : ""}`} onClick={() => cambiarVista(mostrarPerfil)}>Perfil</button>
           <button type="button" className={`nav-link ${vistaDashboard === "cuenta" ? "active" : ""}`} onClick={() => cambiarVista(mostrarCuenta)}>Cuenta</button>
         </nav>

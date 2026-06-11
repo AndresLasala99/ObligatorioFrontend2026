@@ -35,6 +35,11 @@ const dashboardSlice = createSlice({
       state.entrenamientoSeleccionado = null
       state.categoriaSeleccionada = null
     },
+    mostrarMotivacion: (state) => {
+      state.vistaDashboard = "motivacion"
+      state.entrenamientoSeleccionado = null
+      state.categoriaSeleccionada = null
+    },
     mostrarMisInscripciones: (state) => {
       state.vistaDashboard = "misInscripciones"
       state.entrenamientoSeleccionado = null
@@ -79,6 +84,7 @@ export const {
   mostrarCategorias,
   mostrarPerfil,
   mostrarCuenta,
+  mostrarMotivacion,
   mostrarMisInscripciones,
   mostrarHistorial,
   mostrarHistorialEntrenamientos,

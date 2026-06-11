@@ -12,6 +12,7 @@ import ListadoEntrenamientos from "../../componentes/dashboard/ListadoEntrenamie
 import FormularioEntrenamiento from "../../componentes/dashboard/FormularioEntrenamiento.jsx"
 import HistorialEntrenamientos from "../../componentes/dashboard/HistorialEntrenamientos.jsx"
 import MisInscripciones from "../../componentes/dashboard/MisInscripciones.jsx"
+import Motivacion from "../../componentes/dashboard/Motivacion.jsx"
 import PanelCategorias from "../../componentes/dashboard/PanelCategorias.jsx"
 import PerfilUsuario from "../../componentes/dashboard/PerfilUsuario.jsx"
 
@@ -58,6 +59,8 @@ const DashboardPage = () => {
         {vistaDashboard === "perfil" && <PerfilUsuario />}
 
         {vistaDashboard === "cuenta" && <CuentaUsuario />}
+
+        {vistaDashboard === "motivacion" && <Motivacion />}
 
         {vistaDashboard === "detalleEntrenamiento" && <DetalleEntrenamiento />}
 
