@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-toastify"
 import api, { debeMostrarError } from "../../api/api.js"
-import { mostrarDetalleEntrenamiento } from "../../features/dashboard/dashboard.slice.js"
+import { mostrarCrearEntrenamiento, mostrarDetalleEntrenamiento } from "../../features/dashboard/dashboard.slice.js"
 import { setEntrenamientos } from "../../features/entrenamientos/entrenamientos.slice.js"
 import { setCategorias } from "../../features/categorias/categorias.slice.js"
 
@@ -169,6 +169,11 @@ const ListadoEntrenamientos = () => {
             {usuario?.rol === "entrenador" ? "Gestiona tus entrenamientos publicados y crea nuevas propuestas para tus alumnos." : "Explora los entrenamientos disponibles y encontra el que mejor se adapte a vos."}
           </p>
         </div>
+        {usuario?.rol === "entrenador" && (
+          <button type="button" className="btn btn-primary" onClick={() => dispatch(mostrarCrearEntrenamiento())}>
+            Nuevo entrenamiento
+          </button>
+        )}
       </div>
 
       <form className="filters-form" onSubmit={filtrarEntrenamientos}>

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 import { toast } from "react-toastify"
 import api, { debeMostrarError } from "../../api/api.js"
 import { agregarCategoria } from "../../features/categorias/categorias.slice.js"
+import { mostrarCategorias } from "../../features/dashboard/dashboard.slice.js"
 import { categoriaSchema } from "../../validators/categorias.validators.js"
 
 const CategoriaForm = () => {
@@ -77,6 +78,17 @@ const CategoriaForm = () => {
   }
 
   return (
+    <article className="panel">
+      <div className="section-title">
+        <div>
+          <h2>Agregar categoría</h2>
+          <p className="text-secondary">Crea una categoría para organizar tus entrenamientos.</p>
+        </div>
+        <button type="button" className="btn btn-outline-secondary" onClick={() => dispatch(mostrarCategorias())}>
+          Volver
+        </button>
+      </div>
+
     <form className="categoria-form" onSubmit={handleSubmit(procesarForm)}>
       <div className="mb-3">
         <label htmlFor="nombreCategoria" className="form-label">Nombre</label>
@@ -125,6 +137,7 @@ const CategoriaForm = () => {
         {isSubmitting ? "Guardando..." : "Crear categoría"}
       </button>
     </form>
+    </article>
   )
 }
 

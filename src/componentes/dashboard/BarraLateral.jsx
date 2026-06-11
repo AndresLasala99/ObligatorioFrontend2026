@@ -35,13 +35,13 @@ const BarraLateral = () => {
       <div className={`sidebar-menu ${menuAbierto ? "open" : ""}`}>
         <nav className="nav flex-column">
           <button type="button" className={`nav-link ${vistaDashboard === "principal" ? "active" : ""}`} onClick={() => cambiarVista(mostrarPrincipal)}>Dashboard</button>
-          <button type="button" className={`nav-link ${vistaDashboard === "entrenamientos" || vistaDashboard === "detalleEntrenamiento" ? "active" : ""}`} onClick={() => cambiarVista(mostrarEntrenamientos)}>
+          <button type="button" className={`nav-link ${vistaDashboard === "entrenamientos" || vistaDashboard === "crearEntrenamiento" || vistaDashboard === "detalleEntrenamiento" || vistaDashboard === "editarEntrenamiento" ? "active" : ""}`} onClick={() => cambiarVista(mostrarEntrenamientos)}>
             {usuario?.rol === "entrenador" ? "Próximos entrenamientos" : "Entrenamientos"}
           </button>
           {usuario?.rol === "entrenador" && (
             <>
               <button type="button" className={`nav-link ${vistaDashboard === "historialEntrenamientos" ? "active" : ""}`} onClick={() => cambiarVista(mostrarHistorialEntrenamientos)}>Historial</button>
-              <button type="button" className={`nav-link ${vistaDashboard === "categorias" || vistaDashboard === "detalleCategoria" ? "active" : ""}`} onClick={() => cambiarVista(mostrarCategorias)}>Categorías</button>
+              <button type="button" className={`nav-link ${vistaDashboard === "categorias" || vistaDashboard === "crearCategoria" || vistaDashboard === "detalleCategoria" || vistaDashboard === "editarCategoria" ? "active" : ""}`} onClick={() => cambiarVista(mostrarCategorias)}>Categorías</button>
             </>
           )}
           {usuario?.rol === "cliente" && (

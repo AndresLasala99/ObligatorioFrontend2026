@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-toastify"
 import api, { debeMostrarError } from "../../api/api.js"
 import { setCategorias } from "../../features/categorias/categorias.slice.js"
+import { mostrarEntrenamientos } from "../../features/dashboard/dashboard.slice.js"
 import { agregarEntrenamiento } from "../../features/entrenamientos/entrenamientos.slice.js"
 import { entrenamientoSchema } from "../../validators/entrenamientos.validators.js"
 
@@ -79,8 +80,16 @@ const FormularioEntrenamiento = () => {
   }
 
   return (
-    <aside className="panel">
-      <h2>Agregar entrenamiento</h2>
+    <article className="panel">
+      <div className="section-title">
+        <div>
+          <h2>Agregar entrenamiento</h2>
+          <p className="text-secondary">Crea una nueva propuesta para tus alumnos.</p>
+        </div>
+        <button type="button" className="btn btn-outline-secondary" onClick={() => dispatch(mostrarEntrenamientos())}>
+          Volver
+        </button>
+      </div>
       <form onSubmit={handleSubmit(procesarForm)}>
         <div className="mb-3">
           <label htmlFor="tituloEntrenamiento" className="form-label">Titulo</label>
@@ -145,7 +154,7 @@ const FormularioEntrenamiento = () => {
           {isSubmitting ? "Guardando..." : "Guardar"}
         </button>
       </form>
-    </aside>
+    </article>
   )
 }
 

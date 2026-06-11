@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import BarraLateral from "../../componentes/dashboard/BarraLateral.jsx"
+import CategoriaForm from "../../componentes/dashboard/CategoriaForm.jsx"
 import CuentaUsuario from "../../componentes/dashboard/CuentaUsuario.jsx"
 import DashboardCliente from "../../componentes/dashboard/DashboardCliente.jsx"
 import DashboardEntrenador from "../../componentes/dashboard/DashboardEntrenador.jsx"
@@ -37,14 +38,15 @@ const DashboardPage = () => {
           usuario?.rol === "cliente" ? (
             <ListadoEntrenamientos />
           ) : (
-            <section className="content-grid">
-              <ListadoEntrenamientos />
-              <FormularioEntrenamiento />
-            </section>
+            <ListadoEntrenamientos />
           )
         )}
 
+        {vistaDashboard === "crearEntrenamiento" && <FormularioEntrenamiento />}
+
         {vistaDashboard === "categorias" && <PanelCategorias />}
+
+        {vistaDashboard === "crearCategoria" && <CategoriaForm />}
 
         {vistaDashboard === "detalleCategoria" && <DetalleCategoria />}
 

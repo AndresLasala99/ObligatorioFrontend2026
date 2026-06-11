@@ -20,8 +20,18 @@ const dashboardSlice = createSlice({
       state.entrenamientoSeleccionado = null
       state.categoriaSeleccionada = null
     },
+    mostrarCrearEntrenamiento: (state) => {
+      state.vistaDashboard = "crearEntrenamiento"
+      state.entrenamientoSeleccionado = null
+      state.categoriaSeleccionada = null
+    },
     mostrarCategorias: (state) => {
       state.vistaDashboard = "categorias"
+      state.entrenamientoSeleccionado = null
+      state.categoriaSeleccionada = null
+    },
+    mostrarCrearCategoria: (state) => {
+      state.vistaDashboard = "crearCategoria"
       state.entrenamientoSeleccionado = null
       state.categoriaSeleccionada = null
     },
@@ -81,7 +91,9 @@ const dashboardSlice = createSlice({
 export const {
   mostrarPrincipal,
   mostrarEntrenamientos,
+  mostrarCrearEntrenamiento,
   mostrarCategorias,
+  mostrarCrearCategoria,
   mostrarPerfil,
   mostrarCuenta,
   mostrarMotivacion,
