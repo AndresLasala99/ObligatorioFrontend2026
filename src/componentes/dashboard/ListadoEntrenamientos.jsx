@@ -12,6 +12,7 @@ const ListadoEntrenamientos = () => {
   const entrenamientos = useSelector((state) => state.entrenamientos.entrenamientos)
   const categorias = useSelector((state) => state.categorias.categorias)
   const [cargando, setCargando] = useState(false)
+  const [entrenadores, setEntrenadores] = useState([])
   const [filtros, setFiltros] = useState({
     titulo: "",
     nivel: "",
@@ -101,6 +102,24 @@ const ListadoEntrenamientos = () => {
     obtenerCategorias()
   }, [dispatch])
 
+  useEffect(() => {
+    const obtenerEntrenadores = async () => {
+      if (usuario?.rol !== "cliente") return
+
+      try {
+        const res = await api.get("/usuarios/entrenadores")
+        setEntrenadores(res.data.entrenadores)
+      } catch (error) {
+        if (debeMostrarError(error)) {
+          const mensaje = error.response?.data?.message || "No se pudieron obtener los entrenadores."
+          toast.error(mensaje)
+        }
+      }
+    }
+
+    obtenerEntrenadores()
+  }, [usuario?.rol])
+
   const cambiarFiltro = (event) => {
     setFiltros({
       ...filtros,
@@ -155,7 +174,12 @@ const ListadoEntrenamientos = () => {
       <form className="filters-form" onSubmit={filtrarEntrenamientos}>
         <input className="form-control" type="text" name="titulo" placeholder="Buscar por título" value={filtros.titulo} onChange={cambiarFiltro} />
         {usuario?.rol === "cliente" && (
-          <input className="form-control" type="text" name="entrenador" placeholder="Buscar por entrenador" value={filtros.entrenador} onChange={cambiarFiltro} />
+          <select className="form-select" name="entrenador" value={filtros.entrenador} onChange={cambiarFiltro}>
+            <option value="">Todos los entrenadores</option>
+            {entrenadores.map((entrenador) => (
+              <option value={entrenador._id} key={entrenador._id}>{entrenador.nombre}</option>
+            ))}
+          </select>
         )}
         <select className="form-select" name="nivel" value={filtros.nivel} onChange={cambiarFiltro}>
           <option value="">Todos los niveles</option>
